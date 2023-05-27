@@ -1,0 +1,152 @@
+.contact {
+  &-block {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30%;
+  }
+
+  &-txt {
+    width: 65%;
+    margin: 0 auto;
+    border-bottom: solid 2px $black;
+    padding-bottom: 5%;
+
+    p {
+      line-height: 1.5em;
+    }
+  }
+
+  &-form {
+    width: 100%;
+    margin: 10% 0;
+  }
+
+  &-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7.5%;
+
+    &-area {
+      align-items: baseline;
+    }
+  }
+
+  &-form-box1,
+  &-form-box2 {
+    height: 3em;
+    width: 70%;
+    padding-left: 5px;
+    font-size: 1em;
+  }
+
+  &-txtarea {
+    width: 70%;
+    height: 15em;
+    font-size: 1em;
+    padding: 5px;
+  }
+
+  &-form-ttl {
+    width: 40%;
+    height: 100%;
+    font-size: 1em;
+    position: relative;
+
+    &::after {
+      content: "必須";
+      position: absolute;
+      top: 50%;
+      left: 65%;
+      transform: translateY(-50%) translateX(-50%);
+      text-align: center;
+      width: 25%;
+      line-height: 2.5;
+      font-size: 0.75em;
+      color: #c72930;
+      border: 1px solid #c72930;
+      border-radius: 2px;
+    }
+  }
+}
+
+//レスポンシブ対応（1024px） 
+@media screen and (max-width: 1024px) {
+.contact {
+  &-block {
+    margin-top: 20%;
+  }
+
+  &-txt {
+    width: 75%;
+  }
+}
+}
+
+//レスポンシブ対応（768px）
+@media screen and (max-width: 768px) {
+.contact {
+  &-block {
+    margin-top: 30%;
+  }
+
+  &-txt {
+    width: 90%;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  &-form-ttl {
+    font-size: 0.8em;
+  }
+}
+}
+
+//レスポンシブ対応（480px）
+@media screen and (max-width: 480px) {
+.contact {
+  &-block {
+    margin-top: 50%;
+  }
+
+  &-txt {
+    p {
+      font-size: 14px;
+    }
+  }
+
+  &-form {
+    margin: 20% 0;
+  }
+
+  &-box {
+    display: unset;
+  }
+
+  &-form {
+    &-ttl {
+      width: 100%;
+      display: block;
+      margin: 15% 0 5% 0;
+
+      &::after {
+        left: 50%;
+      }
+    }
+
+    &-box1 {
+      width: 100%;
+    }
+
+    &-box2 {
+      width: 100%;
+    }
+  }
+
+  &-txtarea {
+    width: 100%;
+  }
+}
+
+}

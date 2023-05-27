@@ -1,0 +1,824 @@
+// ローディング画面
+#splash {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: $white;
+  z-index: 9999;
+
+  &-logo {
+    position: absolute;
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.is-active {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.splashbg {
+  display: none;
+
+  &.is-active {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+body.appear .splashbg {
+  display: block;
+  content: "";
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  background-color: $black;
+  animation-name:PageAnime;
+  animation-duration:1.2s;
+  animation-timing-function:ease-in-out;
+  animation-fill-mode:forwards
+}
+
+@keyframes PageAnime {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  50% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+
+  51% {
+    transform-origin: right;
+  }
+
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+}
+
+#container {
+  opacity: 0;
+
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+body.appear #container {
+  animation-name: PageAnimeAppear;
+  animation-duration: 1s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes PageAnimeAppear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// メインセクション背景 
+.index-main {
+  background: linear-gradient(to right, $white 0%, $white 30%, $gray 30%, $gray 100%);
+}
+
+// トップセクション
+.index-top {
+  position: relative;
+  // トップタイトル
+  h1 {
+    position: absolute;
+    display: inline-block;
+    color: $white;
+    font-size: 70px;
+    top: 60%;
+    left: 15%;
+    line-height: 1em;
+    letter-spacing: 5px;
+    
+    span {
+      display: block;
+      font-size: 24px;
+      letter-spacing: 0px;
+    }
+  }
+}
+
+// スライドショー
+.slide {
+  width: 100%;
+  height: 100vh;
+
+  &::before {
+    content: "";
+    background-color: $black;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-img1 {
+    background: url(../img/top.png) no-repeat center;
+    background-size: cover;
+  }
+
+  &-img2 {
+    background: url(../img/top2.png);
+    background-size: cover;
+  }
+
+  &-img3 {
+    background: url(../img/top3.png);
+    background-size: cover;
+  }
+
+  &-img4 {
+    background: url(../img/top4.png);
+    background-size: cover;
+  }
+}
+
+// 矢印(next)
+.slick-next {
+  right: 0;
+  visibility: hidden;
+}
+
+// サービスセクション
+.index {
+  &-service {
+    position: relative;
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+      width: 95%;
+      margin: 0 auto;
+
+      // サービスセクション左側
+      .index-service-left {
+        width: 45%;
+        display: block;
+
+        .section {
+          &-ttl {
+            margin-bottom: 10%;
+          }
+
+          &-desc {
+            margin-bottom: 15%;
+          }
+
+          &-txt {
+            width: 50%;
+            margin-bottom: 10%;
+          }
+        }
+      }
+    }
+    // サービスセクション右側
+    .index-service-right {
+      width: 55%;
+      position: relative;
+
+      // サービスセクションアイコン
+      .index-service-logo {
+        border: solid 10px $black;
+        background-color: $white;
+        border-radius: 50%;
+        width: 12.5em;
+        height: 12.5em;
+        
+
+        &::before {
+          content: "";
+          border: solid 3px #000;
+          border-radius: 50%;
+          width: 115%;
+          height: 115%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        
+        img {
+          position: relative;
+          left: 50%;
+          top: 45%;
+          transform: translate(-50%, -50%);
+        }
+
+        h1 {
+          text-align: center;
+          font-size: 28px;
+        }
+      }  
+    }
+  }
+
+  // コンサルティング
+  &-consulting {
+    position: absolute;
+    top: 12.5%;
+    left: 40%;
+
+    img {
+      width: 110px;
+      height: 80px;
+    }
+
+    h1 {
+      position: relative;
+      top: 70px;
+    }
+  }
+
+  // 動画編集
+  &-video {
+    position: absolute;
+    top: 35%;
+    left: -10%;
+    transform: translateY(-50%);
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  
+  // Web制作
+  &-web {
+    position: absolute;
+    bottom: 12.5%;
+    left: 40%;
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
+
+    h1 {
+      position: relative;
+      top: 40px;
+    }
+  }
+}
+
+// アバウトセクション
+.index-about {
+  position: relative;
+
+  &-txt {
+    width: 95%;
+    margin: 0 auto;
+    text-align: right;
+
+    .section-ttl {
+      margin-bottom: 7.5%;
+    }
+
+    .section-desc {
+      margin-bottom: 7.5%;
+    }
+  }
+
+  // アバウトセクション画像
+  &-imgs {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &-img {
+    width: 27.5%;
+    height: 12.5em;
+    position: relative;
+
+    // アバウト画像にカーソルを乗せたとき
+    &:hover {
+      transition: 0.5s all;
+      transform: scale(1.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    &::before {
+      content: "";
+      background-color: $dgray;
+      opacity: 0.4;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    h1 {
+      color: $white;
+      font-size: 30px;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+  }
+}
+
+// ニュースセクション
+.index-news {
+  position: relative;
+
+  .section-ttl {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 10%;
+  }
+  
+  // ニュースアイテム
+  .news-item {
+    width: 85%;
+    margin-left: auto;
+    border-bottom: solid 1px $dgray;
+    padding: 2.5% 0;
+    position: relative;
+
+    &:hover {
+      background-color: $white;
+      opacity: 0.6;
+    }
+
+    // カーソルが置かれると線が現れる
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      border-bottom: solid 3px $orange;
+    }
+
+    &:hover::after {
+      animation: border-line 1s linear forwards;
+    }
+    
+    // ニュースアイテム矢印
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-top: solid 2px $dgray;
+      border-left: solid 2px $dgray;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translate(-50%);
+      transform: rotate(135deg);
+    }
+
+    &:hover::before {
+      right: 20px;
+      border-top: solid 3px $gray;
+      border-left: solid 3px $gray;
+    }
+
+    &:first-child {
+      border-top: solid 1px $dgray;
+    }
+
+    &:last-child {
+      margin-bottom: 10%;
+    }
+
+    .news-item-img {
+      width: 15em;
+      height: 10em;
+      margin-right: 5%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .news-item-txt {
+      margin-left: 5%;
+      width: 80%;
+  
+      // ニュースタグ
+      .news-category {
+        display: none;
+      }
+
+      .post-categories {
+        li {
+          margin: 2.5% 0 10% 0;
+          
+          a {
+            color: $dgray;
+            background-color: $bwhite;
+            padding: 1% 5% 1% 0;
+          }
+        }
+      }
+
+      .news-ttl {
+        color: $dgray;
+
+        span {
+          display: block;
+          color: $black;
+          margin-top: 3.5%;
+        }
+      }
+    }
+  }
+}
+
+// カーソルが置かれると線が現れるアニメーション
+@keyframes border-line {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+// コンタクトセクション
+.index-contact {
+  text-align: center;
+  padding-bottom: 10%;
+  position: relative;
+
+  .section {
+    &-ttl {
+      margin-bottom: 5%;
+    }
+
+    &-desc {
+      margin-bottom: 5%
+    }
+  }
+}
+
+//レスポンシブ対応（1024px） 
+@media screen and (max-width: 1024px) {
+.scrolldawn {
+  top: 82em;
+}
+
+.index {
+  &-video {
+    top: 35%;
+  }
+
+  &-web {
+    bottom: 5%;
+  }
+}
+
+.index-news {
+   .news-item { 
+    .news-item-txt {
+      .post-categories {
+        li {
+          margin: 2.5% 0 12.5% 0;
+        }
+      }
+    }
+  }
+}
+
+}
+//レスポンシブ対応（768px）
+@media screen and (max-width: 768px) {
+section {
+  margin-bottom: 20%;
+}
+
+// セクショントップタイトル
+.index {
+  &-top {
+    h1 {
+      left: 10%;
+    }
+  }
+}
+
+// スクロールダウン
+.scrolldawn {
+  top: 62.5em;
+}
+
+.index-service {
+  .index-service-right {
+    .index-service-logo {
+      width: 10em;
+      height: 10em;
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// サービス右側アイコン
+.index {
+  &-consulting {
+    h1 {
+      top: 60px
+    }
+  }
+
+  &-video {
+    top: 35%;
+
+    h1 {
+      position: relative;
+      top: -15px;
+    }
+  }
+
+  &-web {
+    bottom: 0;
+
+    h1 {
+      position: relative;
+      top: 15px;
+    }
+  }
+}
+
+// アバウトセクション 
+.index {
+  // アバウトセクション画像
+  &-about {
+    &-img {
+      height: 8em;
+    }
+  }
+}
+
+// ニュースセクション
+.index-news {
+  &-item {
+    .news-item-img {
+      width: 15em;
+      height: 7.5em;
+    }
+
+    .news-ttl {
+      font-size: 16px;
+    }
+  }
+
+  .news-item {
+    .news-item-txt {
+      .post-categories {
+        li {
+          margin: 5% 0 20% 0;
+        }
+      }
+    }
+  }
+}
+
+}
+
+//レスポンシブ対応（480px）
+@media screen and (max-width: 480px) {
+section {
+  margin-bottom: 40%;
+}
+
+// スクロールダウン
+.scrolldawn {
+  top: 51em;
+}
+
+.index {
+  &-top {
+    // トップセクションタイトル
+    h1 {
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 35px;
+      text-align: center;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  // サービスセクション
+  &-service {
+    margin-bottom: 140%;
+
+    &-block {
+      display: unset;
+
+      // サービスセクション左側 
+      .index-service-left {
+        width: unset;
+      
+        .section {
+          &-ttl {
+            text-align: center;
+            margin-bottom: 15%;
+          }
+
+          &-desc {
+            text-align: center;
+          }
+
+          &-txt {
+            width: 50%;
+            font-size: 14px;
+            margin: 0 auto;
+            margin-bottom: 10%;
+          }
+        }
+      }
+
+      // サービスセクション右側
+      .index-service-right {
+        width: unset;
+
+        .index-service-logo {
+          width: 7.5em;
+          height: 7.5em;
+          border: solid 5px #000;
+
+          h1 {
+            font-size: 16px;
+          }
+          
+          &::before {
+            border: solid 1px #000;
+            width: 110%;
+            height: 110%;
+          }
+        }
+      }
+    }
+  }
+
+  // コンサルティングアイコン
+  &-consulting {
+    left: 30%;
+    transform: translateX(-50%);
+
+    img {
+      width: 80px;
+      height: 50px;
+    }
+
+    h1 {
+      top: 50px;
+    }
+  }
+  
+  // 動画編集アイコン
+  &-video {
+    top: 8.6em;
+    left: 7.5%;
+
+    img {
+      width: 120px;
+      height: 90px;
+    }
+  
+    h1 {
+      top: 10px;
+    }
+  }
+  
+  // Web制作編集
+  &-web {
+    top: 8.5em;
+    left: 53%;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  
+    h1 {
+      top: 20px;
+    }
+  }
+
+  // アバウトセクション
+  &-about {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40%;
+
+    &-txt {
+      text-align: center;
+      margin-bottom: 20%;
+    }
+
+    &-imgs {
+      display: unset;
+    }
+
+    &-img {
+      width: 100%;
+      height: 10em;
+      display: block;
+      margin-bottom: 15%;
+    }
+  }
+
+  // ニュースセクション
+  &-news {
+    .section-ttl {
+      text-align: center;
+    }
+
+    .news-item {
+      width: 90%;
+      margin: 0 auto;
+
+      &::before {
+        width: 10px;
+        height: 10px;
+      }
+
+      // ニュース画像
+      .news-item-img {
+        width: 7em;
+        height: 4em;
+      }
+
+      // ニューステキスト
+      .news-item-txt {
+        width: 90%;
+
+        .post-categories {
+          li {
+            margin: 5% 0 10% 0;
+            
+            a {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+
+      // ニュースタイトル
+      .news-ttl {
+        font-size: 10px;
+        margin-top: 4%;
+      }
+    }
+  }
+
+  // コンタクトセクション
+  &-contact {
+    padding-bottom: 30%;
+    
+    .section-desc {
+      margin-bottom: 15%;
+    }
+  }
+}
+
+}
+
+

@@ -1,0 +1,238 @@
+// ニュースセクション
+.news {
+  &-block {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  // ニュースリスト
+  &-list {
+    margin-top: 25%;
+
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      margin: auto;
+      border-bottom: solid 1px $black;
+       
+      li {
+        margin: 1% 5%;
+
+        a {
+          color: $black;
+          font-size: 16px;
+
+          &:hover {
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+
+  &-items {
+    margin-top: 10%;
+  }
+
+  // ニュースアイテム
+  &-item {
+    display: flex;
+    align-items: top;
+    border-bottom: solid 1px $dgray;
+    padding: 2.5% 0;
+    position: relative;
+
+    &:hover {
+      background-color: $white;
+      opacity: 0.6;
+    }
+  
+    // ニュースアイテム矢印
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-top: solid 2px $dgray;
+      border-left: solid 2px $dgray;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translate(-50%);
+      transform: rotate(135deg);
+    }
+
+    &:hover::before {
+      right: 20px;
+      border-top: solid 3px $gray;
+      border-left: solid 3px $gray;
+    }
+  
+    // カーソルが置かれると線が現れる
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      border-bottom: solid 3px $orange;
+    }
+    
+    &:hover::after {
+      animation: border-line 1s linear forwards;
+    }
+
+    &:first-child {
+      border-top: solid 1px $dgray;
+    }
+  
+    &:last-child {
+      margin-bottom: 10%;
+    }
+  
+    .news-item-img {
+      width: 20em;
+      height: 10em;
+      margin-right: 5%;
+  
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    .news-item-txt {
+      width: 80%;
+  
+      // ニュースタグ
+  
+      .news-ttl {
+        color: $dgray;
+  
+        span {
+          display: block;
+          color: $black;
+          margin-top: 3.5%;
+        }
+      }
+    }
+  }
+}
+
+// カーソルが置かれると線が現れるアニメーション
+@keyframes border-line {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+//レスポンシブ対応（1024px） 
+@media screen and (max-width: 1024px) {
+.news {
+  &-list {
+    ul {
+      width: 60%;
+    }
+  }
+
+  &-item { 
+    .news-item-txt {
+      .news-category {
+          font-size: 14px;
+      }
+    }
+  }
+}
+
+}
+
+//レスポンシブ対応（768px）
+@media screen and (max-width: 768px) {
+// ニュースセクション
+.news {
+  // ニュースリスト
+  &-list {
+    ul {
+      width: 65%;
+
+      li {
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  // ニュースアイテム
+  &-item {
+    .news-item-img {
+      width: 15em;
+      height: 7.5em;
+    }
+  }
+
+  &-ttl {
+    font-size: 16px;
+  }
+}
+
+}
+
+//レスポンシブ対応（480px）
+@media screen and (max-width: 480px) {
+.news {
+  &-block {
+    margin: 50% auto;
+  }
+
+  &-list {
+    width: 90%;
+    margin: 0 auto;
+
+    ul {
+      width: 90%;
+
+      li {
+        margin: 2% 3.5%;
+
+        a {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+  &-item {
+    &::before {
+      width: 10px;
+      height: 10px;
+    }
+    
+    // ニュース画像
+    .news-item-img {
+      width: 10em;
+      height: 4em;
+    }
+    
+    // ニューステキスト
+    .news-item-txt {
+      width: 90%;
+    
+      .news-category {
+        font-size: 10px;
+      }
+    }
+    
+    // ニュースタイトル
+    .news-ttl {
+      font-size: 10px;
+      margin-top: 4%;
+    }
+  }
+}
+
+}
